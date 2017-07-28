@@ -22,7 +22,7 @@ RUN conda update --all -y &&\
          conda config --add channels r &&\
          conda config --add channels bioconda &&\
          conda config --add channels conda-forge &&\
-         conda config --add channels defaults &&\
+         #conda config --add channels defaults &&\
          #conda config --set show_channel_urls yes
          git clone https://github.com/neherlab/pan-genome-analysis.git &&\
          cd pan-genome-analysis &&\
