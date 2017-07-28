@@ -27,7 +27,7 @@ RUN conda update --all -y &&\
          git clone https://github.com/neherlab/pan-genome-analysis.git &&\
          cd pan-genome-analysis &&\
          git submodule update --init &&\
-         conda install python=2.7.13 biopython=1.66 numpy=1.10.4 scipy=0.16.1 pandas=0.16.2 ete2=2.3.10  diamond=0.8.36  fasttree=2.1.9 mafft=7.305 mcl=14.137 raxml=8.2.9 -y
+         conda install  -y python=2.7.13 biopython=1.66 numpy=1.10.4 scipy=0.16.1 pandas=0.16.2 ete2=2.3.10  diamond=0.8.36  fasttree=2.1.9 mafft=7.305 mcl=14.137 raxml=8.2.9
 
 #Expose port 8000 (webserver)
 EXPOSE :8000
