@@ -18,6 +18,7 @@ FROM continuumio/miniconda
 
 MAINTAINER cheng gong <512543469@qq.com>
 
+##########pan-genome-analysis############
 RUN conda update --all -y &&\
          conda config --add channels r &&\
          conda config --add channels bioconda &&\
@@ -28,6 +29,13 @@ RUN conda update --all -y &&\
          cd pan-genome-analysis &&\
          git submodule update --init &&\
          conda install  -y python=2.7.13 biopython=1.66 numpy=1.10.4 scipy=0.16.1 pandas=0.16.2 ete2=2.3.10  diamond=0.8.36  fasttree=2.1.9 mafft=7.305 mcl=14.137 raxml=8.2.9
+
+##########pan-genome-visualization############
+RUN conda install nodejs=4.4.1 &&\
+         git clone https://github.com/neherlab/pan-genome-visualization.git &&\
+         cd pan-genome-visualization && \
+         git submodule update --init && \
+         npm install
 
 #Expose port 8000 (webserver)
 EXPOSE :8000
