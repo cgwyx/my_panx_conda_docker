@@ -1,2 +1,2 @@
-# my_panx_conda_docker
+# panx_conda_docker
 pan-genome analysis, interactive visualization and exploration
