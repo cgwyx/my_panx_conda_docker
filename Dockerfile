@@ -6,10 +6,10 @@
 # Software Version: 1.0
 # Description:      Microbial pan-genome analysis and exploration toolkit
 # Code:                  https://github.com/neherlab/pan-genome-analysis
-# Base Image:       debian:stretch
-# Build Cmd:        sudo docker build -t debian_panx:panx_docker_v1.0 .
-# Pull Cmd:           docker pull panx:panx_docker_v1.0
-# Run Cmd:          sudo docker run -it --rm -v /home:/home -p 8000:8000 --name=panx debian_panx:panx_docker_v1.0
+# Base Image:       debian:jessie
+# Build Cmd:        docker build -t conda:panx .
+# Pull Cmd:           docker pull cgwyx/panx_conda_docker
+# Run Cmd:          docker run -it --rm  -v /home:/home cgwyx/panx_conda_docker:latest
 # File Author / Maintainer: cheng gong <512543469@qq.com>
 #################################################################
 
@@ -19,6 +19,9 @@ FROM continuumio/miniconda
 MAINTAINER cheng gong <512543469@qq.com>
 
 ##########pan-genome-analysis############
+ADD ./panx-docker-add-new-pages-repo.sh / \
+         ./panx-docker-link-to-server.py  /
+
 RUN conda update --all -y &&\
          conda config --add channels r &&\
          conda config --add channels bioconda &&\
@@ -36,6 +39,7 @@ RUN conda install nodejs=4.4.1 &&\
          cd pan-genome-visualization && \
          git submodule update --init && \
          npm install
+
 
 #Expose port 8000 (webserver)
 EXPOSE :8000
